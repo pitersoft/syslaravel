@@ -21,7 +21,13 @@
 @stop
 
 @section('js')
+    @if(session('status'))
     <script>
-        
+        Swal.fire(
+          '¡Buen Trabajo!',
+          '¡Estás logueado!',
+          'success'
+        )
     </script>
+    @endif
 @stop

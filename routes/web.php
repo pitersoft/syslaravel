@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/home/personas/create', function(){
 // 	return view('personas.create');
 // });
+
+Route::view('login','login')->middleware('guest');
+
+Route::post('login',function(){
+    $credentials = request()->validate([
+    	'email' => ['required', 'email', 'string'],
+    	'password' => ['required', 'string']
+    ]);
+
+    $remember = request()->filled('remember');
+
+    if (Auth::attempt($credentials,$remember)){
+    	request()->session()->regenerate();
+    	return redirect('home')->with('status', 'Estás logueado');
+    }else{
+    	return back()->withErrors([
+    		'email' => __('auth.failed')
+    	]);
+    }
+});
