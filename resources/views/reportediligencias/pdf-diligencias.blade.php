@@ -14,7 +14,7 @@
 <body>
 	<div class="" style="width: 100%;">
 		<h1 class="text-center">Tabla Diligencias</h1>
-		<a class="btn btn-success" href="/reportediligencias">Volver</a>
+		<br>
 		<table id="tdiligencias" class="table table-light table-striped mt-4 text-center">
 				<thead>
 					<tr>
