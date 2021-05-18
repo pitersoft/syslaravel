@@ -3,44 +3,49 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1 class="text-center">Permisos</h1>
+    <h1 class="text-center">Reporte Visitas</h1>
 @stop
 
 @section('content')
-	<a href="permisos/create" class="btn btn-success">CREAR</a>
+	<div class="container" style="display: flex;flex-direction: row;">
+		<a style="height: 40px;margin-top: 30px; margin-right: 200px;" href="reportevisitas/create" class="btn btn-success">Nuevo</a>
+		<form style="display: flex;flex-direction: row;" action="/reportevisitas" method="POST">
+			@csrf
+	        <div class="mb-3" style=" margin-right: 30px;">
+	          <label for="fhinicio" class="form-label">Fecha Inicial</label>
+	          <input type="date" class="form-control" name="fhinicio" id="fhinicio" tabindex="2">
+	        </div>
+	        <div class="mb-3" style=" margin-right: 30px;">
+	          <label for="fhfinal" class="form-label">Fecha Final</label>
+	          <input type="date" class="form-control" name="fhfinal" id="fhfinal" tabindex="3">
+	        </div>
+	        <button style="height: 40px;margin-top: 30px; margin-right: 30px;" type="submit" class="btn btn-primary " tabindex="5">Buscar</button>
+		</form>
+		<a style="height: 40px;margin-top: 30px;" class="btn btn-dark" href="{{route('PDF-visitas')}}">Generar Reporte</a>
+	</div>
 	<br><br><br>
 	<div class="card">
 		<div class="card-body">
-			<table id="tpermisos" class="table table-light table-striped mt-4">
+			<table id="tvisitas" class="table table-light table-striped mt-4">
 				<thead>
 					<tr>
 						<th>N°</th>
-			            <th>NIVEL</th>
-			            <th>USUARIOS</th>
-			            <th>PERSONAS</th>
-			            <th>VISITAS</th>
-			            <th>PERMISOS</th>
-			            <th>REPORTE_PERMISOS</th>
-			            <th>DILIGENCIAS</th>
-			            <th>REPORTE_DILIGENCIAS</th>
+			            <th>NOMBRE</th>
+			            <th>FECHA INGRESO</th>
+			            <th>FECHA SALIDA</th>
 			            <th>ACCIONES</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($permisos as $permiso)
+					@foreach($visitas as $visita)
 					<tr>
-						<td>{{$permiso->id}}</td>
-						<td>{{$permiso->idnivel}}</td>
-						<td>{{$permiso->usuarios}}</td>
-						<td>{{$permiso->personas}}</td>
-						<td>{{$permiso->visitas}}</td>
-						<td>{{$permiso->permisos}}</td>
-						<td>{{$permiso->reporte_permisos}}</td>
-						<td>{{$permiso->diligencias}}</td>
-						<td>{{$permiso->reporte_diligencias}}</td>
+						<td>{{$visita->id}}</td>
+						<td>{{$visita->idpersona}}</td>
+						<td>{{$visita->fh_ingreso}}</td>
+						<td>{{$visita->fh_salida}}</td>
 						<td>
-							<form action="{{ route ('permisos.destroy',$permiso->id)}}" method="POST" class="formulario-eliminar">
-							<a href="permisos/{{$permiso->id}}/edit" class="btn btn-warning">Editar</a>
+							<form action="{{ route ('reportevisitas.destroy',$visita->id)}}" method="POST" class="formulario-eliminar">
+							<a href="reportevisitas/{{$visita->id}}/edit" class="btn btn-warning">Editar</a>
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn btn-danger">Borrar</button>
@@ -67,7 +72,7 @@
 	<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 	<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
     <script>
-        $('#tpermisos').DataTable({
+        $('#tvisitas').DataTable({
         	responsive: true,
         	autoWidth: false,
         	"language": {

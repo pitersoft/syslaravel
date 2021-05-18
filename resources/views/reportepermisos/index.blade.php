@@ -3,11 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1 class="text-center">Permisos</h1>
+    <h1 class="text-center">Reporte Permisos</h1>
 @stop
 
 @section('content')
-	<a href="permisos/create" class="btn btn-success">CREAR</a>
+	<a class="btn btn-dark" href="{{route('PDF-permisos')}}">Generar Reporte</a>
 	<br><br><br>
 	<div class="card">
 		<div class="card-body">
@@ -23,7 +23,6 @@
 			            <th>REPORTE_PERMISOS</th>
 			            <th>DILIGENCIAS</th>
 			            <th>REPORTE_DILIGENCIAS</th>
-			            <th>ACCIONES</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,14 +37,6 @@
 						<td>{{$permiso->reporte_permisos}}</td>
 						<td>{{$permiso->diligencias}}</td>
 						<td>{{$permiso->reporte_diligencias}}</td>
-						<td>
-							<form action="{{ route ('permisos.destroy',$permiso->id)}}" method="POST" class="formulario-eliminar">
-							<a href="permisos/{{$permiso->id}}/edit" class="btn btn-warning">Editar</a>
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn btn-danger">Borrar</button>
-							</form>
-						</td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -84,33 +75,5 @@
 	            }
 	        }
         });
-    </script>
-    @if (session('eliminar') == 'ok')
-    	<script>
-    		Swal.fire(
-		      '¡Eliminado!',
-		      'Este registro ha sido eliminado.',
-		      'success'
-		    )
-    	</script>
-    @endif
-    <script>
-    	$('.formulario-eliminar').submit(function(e){
-    		e.preventDefault();
-    		Swal.fire({
-			  title: '¿Está seguro?',
-			  text: "¡No podrás revertir esto!",
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  cancelButtonText: 'Cancelar',
-			  confirmButtonText: '¡Sí, bórralo!'
-			}).then((result) => {
-			  if (result.value) {
-			    this.submit();
-			  }
-			})
-    	})
     </script>
 @stop

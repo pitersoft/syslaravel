@@ -267,7 +267,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Usuarios',
-                    'url'  => 'usuario',
+                    'url'  => 'users',
                 ],
                 [
                     'text' => 'Personas',
@@ -289,15 +289,15 @@ return [
             'submenu' => [
                 [
                     'text' => 'Visitas',
-                    'url'  => '#',
+                    'url'  => 'reportevisitas',
                 ],
                 [
                     'text' => 'Permisos',
-                    'url'  => '#',
+                    'url'  => 'reportepermisos',
                 ],
                 [
                     'text' => 'Diligencias',
-                    'url'  => '#',
+                    'url'  => 'reportediligencias',
                 ],
             ],
         ],

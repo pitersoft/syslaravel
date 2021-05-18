@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Permiso;
-class PermisoController extends Controller
+class ReportePermisoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PermisoController extends Controller
     public function index()
     {
         $permisos = Permiso::all();
-        return view('permisos.index')->with('permisos',$permisos);
+        return view('reportepermisos.index')->with('permisos',$permisos);
     }
 
     /**
@@ -24,7 +24,7 @@ class PermisoController extends Controller
      */
     public function create()
     {
-        return view('permisos.create');
+        
     }
 
     /**
@@ -35,19 +35,7 @@ class PermisoController extends Controller
      */
     public function store(Request $request)
     {
-        $permisos = new Permiso();
-
-        $permisos->nombres = $request->get('nombres');
-        $permisos->apellido_pat = $request->get('apellidopat');
-        $permisos->apellido_mat = $request->get('apellidomat');
-        $permisos->dni = $request->get('dni');
-        $permisos->fecha_nacimiento = $request->get('fechanacimiento');
-        $permisos->telefono = $request->get('telefono');
-        $permisos->direccion = $request->get('direccion');
-
-        $permisos->save();
-
-        return redirect('permisos');    
+        
     }
 
     /**
@@ -69,8 +57,7 @@ class PermisoController extends Controller
      */
     public function edit($id)
     {
-        $permiso = Permiso::find($id);
-        return view('permisos.edit')->with('permiso',$permiso);
+        
     }
 
     /**
@@ -82,19 +69,7 @@ class PermisoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $permiso = Permiso::find($id);
-
-        $permiso->nombres = $request->get('nombres');
-        $permiso->apellido_pat = $request->get('apellidopat');
-        $permiso->apellido_mat = $request->get('apellidomat');
-        $permiso->dni = $request->get('dni');
-        $permiso->fecha_nacimiento = $request->get('fechanacimiento');
-        $permiso->telefono = $request->get('telefono');
-        $permiso->direccion = $request->get('direccion');
-
-        $permiso->save();
-
-        return redirect('permisos');
+        
     }
 
     /**
@@ -105,8 +80,6 @@ class PermisoController extends Controller
      */
     public function destroy($id)
     {
-        $permiso = Permiso::find($id);
-        $permiso->delete();
-        return redirect('permisos')->with('eliminar','ok');    
+        
     }
 }

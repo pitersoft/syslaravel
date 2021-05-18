@@ -19,7 +19,7 @@ class DiligenciaController extends Controller
 
     public function index()
     {
-         $diligencias = Diligencia::all();
+        $diligencias = Diligencia::all();
         return view('diligencias.index')->with('diligencias',$diligencias);
     }
 
@@ -75,7 +75,7 @@ class DiligenciaController extends Controller
      */
     public function edit($id)
     {
-         $diligencia = Diligencia::find($id);
+        $diligencia = Diligencia::find($id);
         return view('diligencias.edit')->with('diligencia',$diligencia);
     }
 

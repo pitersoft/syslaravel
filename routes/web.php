@@ -19,12 +19,21 @@ Route::get('/', function () {
 });
 
 Route::resource('/personas','App\Http\Controllers\PersonaController');
-
 Route::resource('/diligencias','App\Http\Controllers\DiligenciaController');
+Route::resource('/users','App\Http\Controllers\UserController');
+Route::resource('/permisos','App\Http\Controllers\PermisoController');
+
+Route::resource('/reportepermisos','App\Http\Controllers\ReportePermisoController');
+Route::resource('/reportediligencias','App\Http\Controllers\ReporteDiligenciaController');
+Route::resource('/reportevisitas','App\Http\Controllers\ReporteVisitaController');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/pdf-diligencias', 'App\Http\Controllers\PDFDiligenciaController@PDF')->name('PDF-diligencias');
+Route::get('/pdf-permisos', 'App\Http\Controllers\PDFPermisoController@PDF')->name('PDF-permisos');
+Route::get('/pdf-visitas', 'App\Http\Controllers\PDFVisitaController@PDF')->name('PDF-visitas');
 
 // Route::get('/home/personas', function(){
 // 	return view('personas.index');
