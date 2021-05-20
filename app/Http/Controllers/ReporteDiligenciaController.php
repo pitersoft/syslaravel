@@ -13,6 +13,9 @@ class ReporteDiligenciaController extends Controller
      */
     public function index()
     {
+        // $fhinicio = request()->get('fhinicio');
+        // $fhfinal = request()->get('fhfinal');
+        // $diligencias = Diligencia::whereBetween('fecha_hora_ingreso',[$fhinicio,$fhfinal])->get();;
         $diligencias = Diligencia::all();
         return view('reportediligencias.index')->with('diligencias',$diligencias);
     }

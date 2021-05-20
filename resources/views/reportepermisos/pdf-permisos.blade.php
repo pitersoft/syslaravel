@@ -14,7 +14,6 @@
 <body>
 	<div class="" style="width: 100%;">
 		<h1 class="text-center">Tabla Permisos</h1>
-		<a class="btn btn-success" href="/reportepermisoss">Volver</a>
 		<table id="tpermisos" class="table table-light table-striped mt-4 text-center text-center">
 			<thead>
 				<tr>

@@ -14,7 +14,6 @@
 <body>
 	<div class="" style="width: 100%;">
 		<h1 class="text-center">Tabla Visitas</h1>
-		<a class="btn btn-success" href="/reportevisitas">Volver</a>
 		<table id="tvisitas" class="table table-light table-striped mt-4 text-center">
 			<thead>
 				<tr>
@@ -29,8 +28,8 @@
 				<tr>
 					<td scope="row" style="border: 1px solid #000;">{{$visita->id}}</td>
 					<td style="border: 1px solid #000;">{{$visita->idpersona}}</td>
-					<td style="border: 1px solid #000;">{{$visita->fh_ingreso}}</td>
-					<td style="border: 1px solid #000;">{{$visita->fh_salida}}</td>
+					<td style="border: 1px solid #000;">{{$visita->created_at}}</td>
+					<td style="border: 1px solid #000;">{{$visita->updated_at}}</td>
 				</tr>
 				@endforeach
 			</tbody>

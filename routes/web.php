@@ -35,6 +35,14 @@ Route::get('/pdf-diligencias', 'App\Http\Controllers\PDFDiligenciaController@PDF
 Route::get('/pdf-permisos', 'App\Http\Controllers\PDFPermisoController@PDF')->name('PDF-permisos');
 Route::get('/pdf-visitas', 'App\Http\Controllers\PDFVisitaController@PDF')->name('PDF-visitas');
 
+Route::get('/search-diligencias', function(){
+ return view('reportediligencias.search');
+});
+
+// Route::get('/passwords/reset', function(){
+//  return view('auth.passwords.reset');
+// });
+
 // Route::get('/home/personas', function(){
 // 	return view('personas.index');
 // });

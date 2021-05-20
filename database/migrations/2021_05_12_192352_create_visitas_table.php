@@ -16,8 +16,7 @@ class CreateVisitasTable extends Migration
         Schema::create('visitas', function (Blueprint $table) {
             $table->id();
             $table->integer('idpersona');
-            $table->timestamp('fh_ingreso');
-            $table->timestamp('fh_salida');
+            $table->timestamps();
         });
     }
 

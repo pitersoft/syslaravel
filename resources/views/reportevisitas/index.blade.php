@@ -41,8 +41,8 @@
 					<tr>
 						<td>{{$visita->id}}</td>
 						<td>{{$visita->idpersona}}</td>
-						<td>{{$visita->fh_ingreso}}</td>
-						<td>{{$visita->fh_salida}}</td>
+						<td>{{$visita->created_at}}</td>
+						<td>{{$visita->updated_at}}</td>
 						<td>
 							<form action="{{ route ('reportevisitas.destroy',$visita->id)}}" method="POST" class="formulario-eliminar">
 							<a href="reportevisitas/{{$visita->id}}/edit" class="btn btn-warning">Editar</a>

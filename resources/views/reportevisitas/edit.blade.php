@@ -16,11 +16,11 @@
         </div>
         <div class="mb-3">
           <label for="fhingreso" class="form-label">Fecha Ingreso</label>
-          <input type="text" class="form-control" name="fhingreso" id="fhingreso" tabindex="2" value="{{$visita->fh_ingreso}}">
+          <input type="datetime-local" class="form-control" name="fhingreso" id="fhingreso" tabindex="2" value="{{$visita->fh_ingreso}}">
         </div>
         <div class="mb-3">
           <label for="fhsalida" class="form-label">Fecha Salida</label>
-          <input type="text" class="form-control" name="fhsalida" id="fhsalida" tabindex="3" value="{{$visita->fh_salida}}">
+          <input type="datetime-local" class="form-control" name="fhsalida" id="fhsalida" tabindex="3" value="{{$visita->fh_salida}}">
         </div>
         <a href="/reportevisitas" class="btn btn-secondary" tabindex="4">Cancelar</a>
         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>

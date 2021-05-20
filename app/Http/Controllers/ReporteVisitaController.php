@@ -13,10 +13,6 @@ class ReporteVisitaController extends Controller
      */
     public function index()
     {   
-        // $fhinicial = date('2018-01-01');
-        // $fhfinal = date('2098-12-30');
-        // $fhinicial = date(request()->get('fhinicial'));
-        // $fhfinal = date(request()->get('fhfinal'));
         $visitas = Visita::all();
         return view('reportevisitas.index')->with('visitas',$visitas);
     }
@@ -42,8 +38,8 @@ class ReporteVisitaController extends Controller
         $visitas = new Visita();
 
         $visitas->idpersona = $request->get('idpersona');
-        $visitas->fh_ingreso = $request->get('fhingreso');
-        $visitas->fh_salida = $request->get('fhsalida');
+        $visitas->created_at = $request->get('fhingreso');
+        $visitas->updated_at = $request->get('fhsalida');
 
         $visitas->save();
 
@@ -82,11 +78,11 @@ class ReporteVisitaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $permiso = Visita::find($id);
+        $visita = Visita::find($id);
 
         $visita->idpersona = $request->get('idpersona');
-        $visita->fh_ingreso = $request->get('fhingreso');
-        $visita->fh_salida = $request->get('fhsalida');
+        $visita->created_at = $request->get('fhingreso');
+        $visita->updated_at = $request->get('fhsalida');
 
         $visita->save();
 

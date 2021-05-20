@@ -1,3 +1,6 @@
+<?php
+use App\Models\Diligencia;
+?>
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -7,6 +10,18 @@
 @stop
 
 @section('content')
+	<?php
+		$hostbd = "localhost";
+		$usuariobd = "root";
+		$clavebd = "";
+		$bdbd = "syslaravel";
+
+		$conexion = mysqli_connect($hostbd,$usuariobd,$clavebd,$bdbd);
+		$conexion = mysqli_connect($hostbd,$usuariobd,$clavebd,$bdbd);
+		$fhinicio = mysqli_escape_string($conexion, $_GET['fhinicio']." 00:00:00");
+		$fhfinal = mysqli_escape_string($conexion, $_GET['fhfinal']." 23:59:59");
+		$diligencias = Diligencia::whereBetween('fecha_hora_ingreso',array(strtotime($fhinicio),strtotime($fhfinal)))->get();
+	?>
 	<div class="container" style="display: flex;flex-direction: row;">
 		<form style="display: flex;flex-direction: row; margin-left: 200px;" action="search-diligencias" method="GET">
 			@csrf
@@ -16,11 +31,11 @@
 			?>
 	        <div class="mb-3" style=" margin-right: 30px;">
 	          <label for="fhinicio" class="form-label">Fecha Inicial</label>
-	          <input type="date" class="form-control" name="fhinicio" id="fhinicio" value="2020-12-01" tabindex="2">
+	          <input type="date" class="form-control" name="fhinicio" id="fhinicio" value="<?php echo $_GET['fhinicio']; ?>" tabindex="2">
 	        </div>
 	        <div class="mb-3" style=" margin-right: 30px;">
 	          <label for="fhfinal" class="form-label">Fecha Final</label>
-	          <input type="date" class="form-control" name="fhfinal" id="fhfinal" value="<?php echo $añosiguiente; ?>-12-30" tabindex="3">
+	          <input type="date" class="form-control" name="fhfinal" id="fhfinal" value="<?php echo $_GET['fhfinal']; ?>" tabindex="3">
 	        </div>
 	        <button style="height: 40px;margin-top: 30px; margin-right: 30px;" type="submit" class="btn btn-primary" tabindex="5">Buscar</button>
 		</form>
